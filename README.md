@@ -1,0 +1,1 @@
+Lingo Chat Helm Chart
