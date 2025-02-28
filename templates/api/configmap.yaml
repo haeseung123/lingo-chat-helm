@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  SERVER_PORT: "{{ .Values.api.config.SERVER_PORT }}"
+  POSTGRESQL_HOST: "{{ .Values.api.config.POSTGRESQL_HOST }}"
+  POSTGRESQL_PORT: "{{ .Values.api.config.POSTGRESQL_PORT }}"
+  POSTGRESQL_DATABASE: "{{ .Values.api.config.POSTGRESQL_DATABASE }}"
+  POSTGRESQL_SYNCHRONIZE: "{{ .Values.api.config.POSTGRESQL_SYNCHRONIZE }}"
+  POSTGRESQL_LOGGING: "{{ .Values.api.config.POSTGRESQL_LOGGING }}"
+  REDIS_CACHE_HOST: "{{ .Values.api.config.REDIS_CACHE_HOST }}"
+  REDIS_CACHE_PORT: "{{ .Values.api.config.REDIS_CACHE_PORT }}"
+  REDIS_CACHE_DB: "{{ .Values.api.config.REDIS_CACHE_DB }}"
+  REACT_APP_BASE: "{{ .Values.api.config.REACT_APP_BASE }}"
+  OAUTH_GOOGLE_REDIRECT: "{{ .Values.api.config.OAUTH_GOOGLE_REDIRECT }}"
+  SOCKET_SERVER_URL: "{{ .Values.api.config.SOCKET_SERVER_URL }}"
+  JWT_ACCESS_EXPIRATION_TIME: "{{ .Values.api.config.JWT_ACCESS_EXPIRATION_TIME }}"
+  JWT_REFRESH_EXPIRATION_TIME: "{{ .Values.api.config.JWT_REFRESH_EXPIRATION_TIME }}"
