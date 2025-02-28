@@ -24,6 +24,34 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{/*
+Prefix (e.g., lingo-)
+*/}}
+{{- define "lingochat.prefix" -}}
+{{- printf "%s-" .Release.Name -}}
+{{- end }}
+
+{{/*
+Full name for Nginx (e.g., lingo-nginx)
+*/}}
+{{- define "lingochat.nginxFullname" -}}
+{{- printf "%s%s" (include "lingochat.prefix" .) .Values.nginx.component | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
+{{/*
+Full name for Socket (e.g., lingo-socket)
+*/}}
+{{- define "lingochat.socketFullname" -}}
+{{- printf "%s%s" (include "lingochat.prefix" .) .Values.socket.component | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
+{{/*
+Full name for API (e.g., lingo-api)
+*/}}
+{{- define "lingochat.apiFullname" -}}
+{{- printf "%s%s" (include "lingochat.prefix" .) .Values.api.component | trunc 63 | trimSuffix "-" -}}
+{{- end }}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "lingochat.chart" -}}
