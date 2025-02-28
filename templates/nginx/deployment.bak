@@ -39,3 +39,11 @@ spec:
             - name: webui
               containerPort: {{ .Values.nginx.service.port }}
               protocol: TCP
+          {{- with .Values.nginx.volumeMounts  }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.nginx.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
