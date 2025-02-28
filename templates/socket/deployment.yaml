@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lingochat.socketFullname" . }}-deploy
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "lingochat.labels" . | nindent 4 }}
+    app: {{ include "lingochat.socketFullname" . }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "lingochat.selectorLabels" . | nindent 6 }}
+      app: {{ include "lingochat.socketFullname" . }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "lingochat.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        app: {{ include "lingochat.socketFullname" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-socket
+          image: "{{ .Values.socket.image.repository }}:{{ .Values.socket.image.tag }}"
+          imagePullPolicy: {{ .Values.socket.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: socket-config
+          ports:
+            - containerPort: {{ .Values.socket.service.targetPort }}

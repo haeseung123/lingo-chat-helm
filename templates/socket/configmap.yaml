@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: socket-config
+data:
+  SERVER_PORT: "{{ .Values.socket.config.SERVER_PORT }}"
+  REDIS_HOST: "{{ .Values.socket.config.REDIS_HOST }}"
+  REDIS_PORT: "{{ .Values.socket.config.REDIS_PORT }}"
+  REDIS_DB: "{{ .Values.socket.config.REDIS_DB }}"
+  API_SERVER_URL: "{{ .Values.socket.config.API_SERVER_URL }}"
