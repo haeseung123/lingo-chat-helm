@@ -15,7 +15,7 @@ RingoChat Helm Chart를 설치하기 전에 필요한 환경입니다.
 - Kubernetes Cluster (v1.22 이상 권장)
 - [Helm v3](https://helm.sh/docs/intro/install/)
 - 외부 접근이 필요한 경우 Nginx Ingress Controller 설치 및 설정
-- Secret 보관을 위한 Vault 설치 및 설정
+- Secret 참조를 위한 Vault 설치 및 설정
 
 ## 설치 방법
 
@@ -30,7 +30,7 @@ git clone https://github.com/haeseung123/lingo-chat-helm.git
 values.yaml 파일을 수정하여 원하는 설정을 적용한 후 설치합니다.
 
 ```
-helm install lingo lingochat/lingochat
+helm install lingo lingo-chat-helm/.
 ```
 
 ## 구성 요소 설명
@@ -105,7 +105,7 @@ JWT_REFRESH_SECRET_KEY=
 #### 새 버전으로 업그레이드
 
 ```
-helm upgrade lingo lingochat/lingochat
+helm upgrade lingo lingo-chat-helm/.
 ```
 
 #### 제거
