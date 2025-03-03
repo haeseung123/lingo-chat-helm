@@ -22,7 +22,7 @@ spec:
         vault.hashicorp.com/role: "api-account"
         vault.hashicorp.com/agent-inject-secret-api-secrets: "{{ .Values.api.vault.secretPath }}"
         vault.hashicorp.com/agent-inject-template-api-secrets: |
-          {{`{{- with secret "{{ .Values.api.vault.secretPath }}" -}}`}}
+          {{`{{- with secret "`}}{{ .Values.api.vault.secretPath }}{{`" -}}`}}
           export POSTGRESQL_USER="{{`{{ .Data.data.POSTGRESQL_USER }}`}}"
           export POSTGRESQL_PASSWORD="{{`{{ .Data.data.POSTGRESQL_PASSWORD }}`}}"
           export OAUTH_GOOGLE_CLIENT_ID="{{`{{ .Data.data.OAUTH_GOOGLE_CLIENT_ID }}`}}"
