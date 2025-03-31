@@ -12,7 +12,7 @@ nginx:
     # This sets the pull policy for images.
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: v1.0.0-tagtest
+    tag: v1.0.0
   service:
     type: ClusterIP
     port: 80
