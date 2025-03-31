@@ -50,7 +50,7 @@ api:
   image:
     repository: haeseung/lingo-api-server.amd64
     pullPolicy: Always
-    tag: latest
+    tag: v1.0.0
   service:
     type: ClusterIP
     port: 3030
