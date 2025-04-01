@@ -33,7 +33,7 @@ socket:
   image:
     repository: haeseung/socket-server.amd64
     pullPolicy: Always
-    tag: latest
+    tag: v1.0.0-cicd
   service:
     type: ClusterIP
     port: 3090
